@@ -6,6 +6,7 @@ import ru.itpark.domain.House;
 import ru.itpark.repository.HouseRepository;
 import ru.itpark.service.HouseService;
 
+import javax.sound.midi.Soundbank;
 import java.util.List;
 
 public class Main {
@@ -23,6 +24,13 @@ public class Main {
 
         List<House> all = service.findAllByName("вахит");
         System.out.println(all);
+
+        all = service.findAllByPrice(2_500, 4_000);
+        System.out.println(all);
+
+
+
+
 
     }
 }

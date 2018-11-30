@@ -7,6 +7,7 @@ import ru.itpark.repository.HouseRepository;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.RecursiveTask;
 
 public class HouseService {
     private HouseRepository repository;
@@ -46,6 +47,18 @@ public class HouseService {
     }
 
 
+    public List<House> findAllByPrice (int priceMin, int priceMax) {
+        List<House> result = new ArrayList<House>();
+
+        for (House house : repository.getAll()) {
+            if (house.getPrice() >= priceMin && house.getPrice() <= priceMax) {
+                result.add(house);
+            }
+        }
+
+        result.sort(new PriceComparator());
+        return result;
+    }
 
 
 
