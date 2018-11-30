@@ -1,5 +1,6 @@
 package ru.itpark.service;
 
+import ru.itpark.comparator.PriceComparator;
 import ru.itpark.domain.House;
 import ru.itpark.repository.HouseRepository;
 
@@ -38,6 +39,14 @@ public class HouseService {
                 result.add(house);
             }
         }
+
+        result.sort(new PriceComparator());
+
         return result;
     }
+
+
+
+
+
 }
